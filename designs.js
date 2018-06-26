@@ -1,5 +1,4 @@
-// Select color input
-// Select size input
+
 
 // When size is submitted by the user, call makeGrid()
 
@@ -11,9 +10,13 @@ function makeGrid() {
 	var canvas, cell, gridHeight, gridWidth, rows;
 	
 	canvas = $('#pixel_canvas');
+	//select the value from the height input
 	gridHeight = $('#input_height').val();
+
+	//select the value from the width input
 	gridWidth = $('#input_width').val();
 	
+	//remove all the child elements from the pixcel_canvas id
 	canvas.children().remove();
 	//canvas.html("");
 	

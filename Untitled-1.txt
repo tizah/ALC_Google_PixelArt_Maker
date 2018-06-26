@@ -1,0 +1,285 @@
+//TopicMaterial / Details
+@using CodeninModel
+
+@model CodedenimWebApp.ViewModels.CourseContentVm
+@{
+    ViewBag.Title = "Topic Material Details";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+
+}
+
+
+
+<link href="~/Content/animate.css" rel="stylesheet" type="text/css" />
+
+
+@*<div class="row ">
+            <div class="col-md-10" id="loadTopicContent">
+                @foreach (var material in Model.Materials)
+                {
+
+                    <div class="panel-footer" id="topicContents">
+                        <div class="text-left">
+
+                            <div id="topicContents">
+                                <div onclick="loadContent(@material.TopicMaterialUploadId)">
+                                <button class="btn btn-success"><i class="fa fa-save fa-fw"></i>@Html.DisplayFor(model => material.Name)</button>
+                                 </div>
+                              </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+
+
+
+
+
+
+        </div>
+
+    <br/>
+
+
+
+        <div class="col-md-9" id="MaterialContent">
+
+        </div>
+
+
+
+        <div class="sidebar right sidebar-size-3 sidebar-offset-0 sidebar-visible-desktop sidebar-skin-white" id="sidebar-library">
+            <div data-scrollable >
+                <h4 class="category">Modules</h4>
+
+                @foreach (var item in Model.Modules)
+        {
+            <div class="sidebar-block">
+                <div class="form-group input-group">
+                    <div class="row margin-none">
+                        <div class="link-text-color"> @item.ModuleName</div>
+                    </div>
+                    @foreach (var topicContent in item.Topics.Where(x => x.ModuleId.Equals(item.ModuleId)))
+            {
+                <button type="button" class="btn btn-primary" onclick="material(@topicContent.TopicId)"><i class="fa fa-book"></i></button>
+    }
+
+                </div>
+            </div>
+    }
+
+
+
+                        </div>
+                    </div>*@
+
+
+
+
+
+
+<div class="media media-grid media-clearfix-xs">
+    <div class="media-body">
+        <div class="row">
+            @*width-350 width-300-md width-100pc-xs*@
+            <div class=" paragraph-inline">
+                <div class="embed-responsive embed-responsive-16by9">
+                    @*<iframe class="embed-responsive-itemSS" src="//www.youtube-nocookie.com/embed/Ycv5fNd4AeM?rel=0"></iframe>*@
+
+
+
+
+                </div>
+            </div>
+
+
+            <div class="col-md-12">
+                <h2 class="text-headline margin-none">Course Introduction</h2>
+                <div class="page-section" id="MaterialContent">
+                    <div>
+                        <p class="text-subhead text-light"> </p>
+                        <ul class="list-group relative paper-shadow margin-none" data-hover-z="0.5" data-animated>
+
+                            <li class="list-group-item paper-shadow">
+
+                                <div class="media-body text-body-2">
+                                    <video controls="controls" id="video1" width="600">
+                                        <source src="~/MaterialUpload/@Model.CourseVideo" type="video/mp4">
+                                        Your browser does not support HTML5 video.
+                                    </video>
+                                </div>
+
+                            </li>
+                            <li class="list-group-item paper-shadow">
+                                <div class="media v-middle">
+                                    <div class="media-left">
+                                        <div class="icon-block s30 bg-grey-500 text-white img-circle">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                    </div>
+                                    <div class="media-body text-body-2">
+                                        To Start Course Click on the Module Section and then choose the content type at the top of the page.
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                @*@* button for next and previous *@
+                @*@foreach (var item in Model.Modules)
+                {
+
+                    foreach (var topicContent in item.Topics.Where(x => x.ModuleId.Equals(item.ModuleId)))
+                    {
+            <div class="panel panel-default">
+                <div class="panel-body buttons-spacing-vertical">
+
+                    <button class="btn btn-primary jsPrevious" href="@Url.Action("Details","TopicMaterialUploads", new { @id = topicContent.ModuleId - 1, @courseId = item.CourseId})"><i class="fa fa-chevron-left"></i> <span>Previous</span></button>
+
+                    <button class="btn btn-primary pull-right jsNext" href="@Url.Action("Details","TopicMaterialUploads", new { @id = topicContent.ModuleId + 1, @courseId = item.CourseId})"> <span>Next</span> <i class="fa fa-chevron-right"></i></button>
+
+              
+                </div>
+            </div>
+                    }
+                }*@
+            </div>
+        </div>
+        @*<div class="page-section">
+
+        </div>
+        <div class="pull-right">
+
+        </div>*@
+
+        <br />
+
+    </div>
+    <div class="media-right">
+        <div class="page-section width-270 width-auto-xs">
+
+            <!-- .panel -->
+            <div class="panel panel-default paper-shadow" data-z="0.5" data-hover-z="1" data-animated>
+                <div class="panel-body">
+                    <h4 class="text-headline">Modules</h4>
+                </div>
+                <ul class="list-group">
+                    @foreach (var item in Model.Modules)
+                    {
+                        <li class="list-group-item">
+                            @foreach (var topicContent in item.Topics.Where(x => x.ModuleId.Equals(item.ModuleId)))
+                            {
+                                <div class="media v-middle">
+                                    <div class="media-left">
+                                        <div class="icon-block s30 bg-grey-400 text-white">
+                                            <i class="fa fa-mortar-board"></i>
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        @item.ModuleName
+                                    </div>
+                                </div>
+
+                                <div id="loadTopicContent">
+                                    <div class="row">
+
+                                        @foreach (var material in Model.Materials)
+                                        {
+                                            <div class="panel-footer" id="topicContents" style="display:inline-block">
+                                                <div class="text-left">
+
+                                                    <div id="topicContents">
+                                                        <div onclick="loadContent(@item.ModuleId)">
+                                                            <button class="btn btn-success btn-xs" data-z="1" data-hover-z="2" data-animated>
+                                                                @material.FileType
+                                                            </button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+
+                                    </div>
+                                </div>
+                            }
+                        </li>
+                    }
+                </ul>
+            </div>
+            <!-- // END .panel -->
+        </div>
+        <!-- // END .page-section -->
+    </div>
+
+</div>
+
+
+    <style>
+    #MaterialContent{
+    padding-top:0px;
+    }
+    </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+    });
+
+    function getButtonId(buttonId) {
+        if (buttonId === 0)
+        {
+            $('.jsPrevious').attr('disabled');
+        }
+    };
+
+    function loadContent(contentId) {
+        $('#MaterialContent').load("/TopicMaterialUploads/DetailsContent/" + contentId)
+            .addClass('animated fadeInLeft')
+            .delay(1000)
+            .queue(function () {
+                $(this).removeClass('animated fadeInLeft').dequeue()
+            });
+
+    }
+    function material(topicId) {
+
+        $('#loadTopicContent').load("/TopicMaterialUploads/SideBarContentForMaterial/" + topicId)
+
+  
+            .queue(function () {
+                $(this).removeClass('animated fadeInLeft').dequeue()
+            });
+        //$(this).addClass('on').delay(500).queue(function() {
+        //    $(this).removeClass('on').dequeue()});
+    }
+
+
+</script>
+<script>
+    var myVideo = document.getElementById("video1");
+
+    function playPause() {
+        if (myVideo.paused)
+            myVideo.play();
+        else
+            myVideo.pause();
+    }
+
+    function makeBig() {
+        myVideo.width = 560;
+    }
+
+    function makeSmall() {
+        myVideo.width = 320;
+    }
+
+    function makeNormal() {
+        myVideo.width = 420;
+    }
+</script>
