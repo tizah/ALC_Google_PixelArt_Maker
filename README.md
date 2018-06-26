@@ -1,6 +1,7 @@
 # Pixel Art Maker Project
-
+link to github page  https://tizah.github.io/ALC_Google_PixelArt_Maker/
 ## Table of Contents
+
 
 * [Instructions](#instructions)
 * [Contributing](#contributing)
